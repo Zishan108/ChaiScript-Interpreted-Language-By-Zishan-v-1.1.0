@@ -1,0 +1,59 @@
+statements  : NEWLINE* statement (NEWLINE+ statement)* NEWLINE*
+
+statement		: KEYWORD:return_chai expr?
+						: KEYWORD:continue_chai
+						: KEYWORD:break_chai
+						: expr
+
+expr        : KEYWORD:cup IDENTIFIER EQ expr
+            : comp-expr ((KEYWORD:and|KEYWORD:or) comp-expr)*
+
+comp-expr   : not comp-expr
+            : arith-expr ((EE|LT|GT|LTE|GTE) arith-expr)*
+
+arith-expr  :	term ((PLUS|MINUS) term)*
+
+term        : factor ((MUL|DIV) factor)*
+
+factor      : (PLUS|MINUS) factor
+            : power
+
+power       : call (POW factor)*
+
+call        : atom (LPAREN (expr (COMMA expr)*)? RPAREN)?
+
+atom        : INT|FLOAT|STRING|IDENTIFIER
+            : LPAREN expr RPAREN
+            : list-expr
+            : if-expr
+            : for-expr
+            : while-expr
+            : func-def
+
+list-expr   : LSQUARE (expr (COMMA expr)*)? RSQUARE
+
+if-expr     : KEYWORD:hot expr KEYWORD:THEN
+              (statement if-expr-b|if-expr-c?)
+            | (NEWLINE statements KEYWORD:sip|if-expr-b|if-expr-c)
+
+if-expr-b   : KEYWORD:mild expr KEYWORD:then_chai
+              (statement if-expr-b|if-expr-c?)
+            | (NEWLINE statements KEYWORD:sip|if-expr-b|if-expr-c)
+
+if-expr-c   : KEYWORD:chilled
+              statement
+            | (NEWLINE statements KEYWORD:sip)
+
+for-expr    : KEYWORD:for_chai IDENTIFIER EQ expr KEYWORD:to_chai expr 
+              (KEYWORD:STEP expr)? KEYWORD:then_chai
+              statement
+            | (NEWLINE statements KEYWORD:sip)
+
+while-expr  : KEYWORD:while_chai expr KEYWORD:then_chai
+              statement
+            | (NEWLINE statements KEYWORD:sip)
+
+func-def    : KEYWORD:brew IDENTIFIER?
+              LPAREN (IDENTIFIER (COMMA IDENTIFIER)*)? RPAREN
+              (ARROW expr)
+            | (NEWLINE statements KEYWORD:sip)
