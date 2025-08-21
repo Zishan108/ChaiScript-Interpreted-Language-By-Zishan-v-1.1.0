@@ -32,6 +32,8 @@ atom        : INT|FLOAT|STRING|IDENTIFIER
 
 list-expr   : LSQUARE (expr (COMMA expr)*)? RSQUARE
 
+dict-exper : LBRACE ((expr (COLON expr) expr)COMMA expr *)? RBRACE  
+
 if-expr     : KEYWORD:hot expr KEYWORD:THEN
               (statement if-expr-b|if-expr-c?)
             | (NEWLINE statements KEYWORD:sip|if-expr-b|if-expr-c)
