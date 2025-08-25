@@ -55,6 +55,8 @@ while-expr  : KEYWORD:while_chai expr KEYWORD:then_chai
               statement
             | (NEWLINE statements KEYWORD:sip)
 
+try-expr    : 
+
 func-def    : KEYWORD:brew IDENTIFIER?
               LPAREN (IDENTIFIER (COMMA IDENTIFIER)*)? RPAREN
               (ARROW expr)

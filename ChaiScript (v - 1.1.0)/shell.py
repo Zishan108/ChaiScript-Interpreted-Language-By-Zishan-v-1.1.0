@@ -27,7 +27,7 @@ def display_intro():
 ::::::::::::::::::::::::::::::::::::::::
     """
 
-    print("ChaiScript Terminal - Created by Zishan (2024)")
+    print("ChaiScript Terminal (v - 1.1.0) - Created by Zishan (2025)")
     print(ASCII_art)
     print("Available commands:")
     print("  help - Show the help message")
@@ -38,10 +38,13 @@ def display_intro():
 def help_system(displayed):
     if not displayed:
         help_text = """
-    Welcome to ChaiScripts 0.1.0's help utility!
+    Welcome to ChaiScripts 1.1.0's help utility!
+
+    Dictionary and Exception Handeling has been added in this new version.
+    For more, Please visit our documentation
 
     If this is your first time using ChaiScript, you should definitely check out
-    the tutorial on the internet at [Link in Future].
+    the tutorial on the internet at zishan108.github.io/Zishan108-ChaiScript-Website-By-Zishan .
     
     To quit this help utility and
     return to the interpreter, just type "quit".
@@ -112,7 +115,8 @@ def display_symbols_help():
         '()': 'Parentheses',
         '[]' : 'Brackets (List Comprehension)',
         '#': 'Single-line comment',
-        '->' : 'Arrow Operator (used for return statements in single line)'
+        '->' : 'Arrow Operator (used for return statements in single line)',
+        '{}' : 'Braces (Dictionary Comprehension)'
     }
     
     print("ChaiScript Symbols:\n")
@@ -182,7 +186,8 @@ def display_builtIn_functions_help():
         'replace(string, string_to_replace, string_replacement)' : 'Returns and replaces string_to_replace in string with string_replacement',
         'split_to_list(string, delimiter)'                       : 'Returns and converts the string into a list with specified delimiter',
         'capitalize(string)'                                     : 'Returns and converts the string to a Capitalized string',
-        'title(string)'                                          : 'Returns and converts the string into a Title cased string'
+        'title(string)'                                          : 'Returns and converts the string into a Title cased string',
+        'is_equals(string1, string2)'                            : 'Returns true if the string1 is equal to string2'
     }
     
     Math_funcs = {

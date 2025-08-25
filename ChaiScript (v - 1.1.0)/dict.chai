@@ -1,0 +1,8 @@
+cup zishan = {
+
+    "name" : "Zishan",
+    "age"  : 20
+}
+
+serveChai(dict_get(zishan, "name"))
+serveChai(dict_get(zishan, "age"))

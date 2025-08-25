@@ -1,5 +1,5 @@
 try_chai then_chai
     cup person = 5/0
 catch_chai then_chai
-    serveChai("Key Error: " + str(error.message));
+    serveChai("Key Error: Division By Zero");
 sip
